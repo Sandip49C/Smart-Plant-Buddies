@@ -1,17 +1,13 @@
 ﻿<Window x:Class="SmartPlantBuddies.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Smart Plant Buddy" Height="600" Width="400">
-    <Grid Margin="10">
-        <StackPanel>
-            <TextBlock Text="Soil Moisture" FontSize="20" HorizontalAlignment="Center" />
-            <TextBlock x:Name="MoistureText" Text="Loading..." FontSize="36" HorizontalAlignment="Center" Margin="0,10,0,20"/>
-
-            <TextBlock Text="Temperature" FontSize="20" HorizontalAlignment="Center" />
-            <TextBlock x:Name="TempText" Text="Loading..." FontSize="36" HorizontalAlignment="Center" Margin="0,10,0,20"/>
-
-            <Button Content="Water Plant Now" Width="150" HorizontalAlignment="Center" Click="WaterButton_Click" Margin="0,10"/>
-            <Button Content="View History" Width="150" HorizontalAlignment="Center" Click="ViewHistory_Click" Margin="0,10"/>
+        Title="Smart Plant Buddies" Height="400" Width="600">
+    <Grid>
+        <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="550">
+            <Button Name="WaterButton" Content="Water Plant Now" Width="150" Height="40" Margin="0,0,0,10" Click="WaterButton_Click"/>
+            <Button Name="ToggleHistoryButton" Content="Show History" Width="150" Height="40" Margin="0,0,0,10" Click="ToggleHistory_Click"/>
+            <TextBlock Name="StatusText" Margin="0,10,0,10"/>
+            <DataGrid Name="HistoryDataGrid" AutoGenerateColumns="True" Height="250" Visibility="Collapsed" IsReadOnly="True"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -2,56 +2,56 @@
 using System.Windows;
 using SmartPlantBuddies.Models;
 using SmartPlantBuddies.Data;
-
+using System.Collections.Generic;
 
 namespace SmartPlantBuddies
 {
     public partial class MainWindow : Window
     {
-        private readonly Repository _repository;
-        private int _currentSensorId = 1; // For demo
-        private int _currentUserId = 1;   // For demo
+        private Repository _repository;
+        private bool _isHistoryVisible = false;
 
         public MainWindow()
         {
-            InitializeComponent(); // This is auto-generated after successful XAML parse
+            InitializeComponent();
             _repository = new Repository();
-            LoadLatestSensorData();
-        }
-
-        private void LoadLatestSensorData()
-        {
-            var readings = _repository.GetSensorReadings(_currentSensorId);
-            if (readings.Count > 0)
-            {
-                var latest = readings[readings.Count - 1];
-                MoistureText.Text = $"{latest.MoistureLevel}%";
-                TempText.Text = $"{latest.Temperature}°C";
-            }
-            else
-            {
-                MoistureText.Text = "No Data";
-                TempText.Text = "No Data";
-            }
+            LoadWateringLogs(); // optional: load logs on startup
         }
 
         private void WaterButton_Click(object sender, RoutedEventArgs e)
         {
             var log = new WateringLog
             {
-                UserId = _currentUserId,
-                SensorId = _currentSensorId,
-                EventType = "manual",
-                Notes = "Manual watering",
-                Timestamp = DateTime.Now.ToString("o")
+                WateredAt = DateTime.Now,
+                Notes = "Watered via button"
             };
-            _repository.SaveWateringLog(log);
-            MessageBox.Show("Watering logged!");
+            _repository.AddWateringLog(log);
+            StatusText.Text = "Watering logged!";
         }
 
-        private void ViewHistory_Click(object sender, RoutedEventArgs e)
+        private void ToggleHistory_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("History feature not implemented yet.");
+            if (_isHistoryVisible)
+            {
+                // Hide the history
+                HistoryDataGrid.Visibility = Visibility.Collapsed;
+                ToggleHistoryButton.Content = "Show History";
+                _isHistoryVisible = false;
+            }
+            else
+            {
+                // Show the history
+                LoadWateringLogs();
+                HistoryDataGrid.Visibility = Visibility.Visible;
+                ToggleHistoryButton.Content = "Hide History";
+                _isHistoryVisible = true;
+            }
+        }
+
+        private void LoadWateringLogs()
+        {
+            var logs = _repository.GetAllWateringLogs();
+            HistoryDataGrid.ItemsSource = logs;
         }
     }
 }

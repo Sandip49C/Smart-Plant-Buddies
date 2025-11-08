@@ -15,7 +15,7 @@ namespace SmartPlantBuddies
         {
             InitializeComponent();
             _repository = new Repository();
-            LoadWateringLogs(); // optional: load logs on startup
+            LoadWateringLogs(); // Optional: load logs on startup
         }
 
         private void WaterButton_Click(object sender, RoutedEventArgs e)
@@ -27,6 +27,12 @@ namespace SmartPlantBuddies
             };
             _repository.AddWateringLog(log);
             StatusText.Text = "Watering logged!";
+
+            // If history is visible, update it immediately
+            if (_isHistoryVisible)
+            {
+                LoadWateringLogs();
+            }
         }
 
         private void ToggleHistory_Click(object sender, RoutedEventArgs e)

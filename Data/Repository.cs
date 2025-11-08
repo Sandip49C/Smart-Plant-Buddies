@@ -32,7 +32,7 @@ namespace SmartPlantBuddies.Data
                 conn.Open();
                 var cmd = new SQLiteCommand(
                     "INSERT INTO WateringLogs (WateredAt, Notes) VALUES (@WateredAt, @Notes)", conn);
-                cmd.Parameters.AddWithValue("@WateredAt", log.WateredAt.ToString("o")); // ISO 8601 format
+                cmd.Parameters.AddWithValue("@WateredAt", log.WateredAt.ToString("o")); // ISO 8601
                 cmd.Parameters.AddWithValue("@Notes", log.Notes);
                 cmd.ExecuteNonQuery();
             }
@@ -44,7 +44,8 @@ namespace SmartPlantBuddies.Data
             using (var conn = new SQLiteConnection($"Data Source={_dbPath}"))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("SELECT Id, WateredAt, Notes FROM WateringLogs", conn);
+                // Order by WateredAt descending for latest first
+                var cmd = new SQLiteCommand("SELECT Id, WateredAt, Notes FROM WateringLogs ORDER BY WateredAt DESC", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

@@ -6,6 +6,6 @@ namespace SmartPlantBuddies.Models
     {
         public int Id { get; set; }
         public DateTime WateredAt { get; set; }
-        public string Notes { get; set; } // optional
+        public string Notes { get; set; }
     }
 }

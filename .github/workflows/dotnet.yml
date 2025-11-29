@@ -17,13 +17,13 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0.x' # or 10.0.x if using latest preview
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore "SmartPlantBuddies/SmartPlantBuddies.csproj"
 
       - name: Build (Release)
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build "SmartPlantBuddies/SmartPlantBuddies.csproj" --configuration Release --no-restore /p:EnableWindowsTargeting=true
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build --verbosity normal
+        run: dotnet test "SmartPlantBuddies/SmartPlantBuddies.csproj" --configuration Release --no-build --verbosity normal

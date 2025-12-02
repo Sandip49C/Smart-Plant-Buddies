@@ -8,7 +8,9 @@ Your IoT Plant Care Companion
 Team Members
 
 Sandip Thapa
+
 Roeisha Lwagun
+
 Raymon KC
 
 

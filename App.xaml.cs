@@ -1,14 +1,16 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
-namespace Smart_PLant
+namespace SmartPlantBuddy;
+
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public App()
     {
+        InitializeComponent();
     }
 
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new NavigationPage(new Views.LoginPage(MainPage.Services.GetService<SecurePinService>())));
+    }
 }

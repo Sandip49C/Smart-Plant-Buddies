@@ -20,10 +20,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiImage Include="Resources\Images\*" />
-		<MauiFont Include="Resources\Fonts\*" />
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	  <Compile Remove="Resources\**" />
+	  <EmbeddedResource Remove="Resources\**" />
+	  <MauiCss Remove="Resources\**" />
+	  <MauiXaml Remove="Resources\**" />
+	  <None Remove="Resources\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,6 +33,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="SQLite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PRIResource Remove="Resources\**" />
 	</ItemGroup>
 
 </Project>

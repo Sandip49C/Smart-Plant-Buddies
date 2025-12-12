@@ -21,9 +21,11 @@ Smart Plant Buddy is a simple mobile application that helps people keep their ho
 
 
 Problem Statement
+
 Many individuals struggle to keep houseplants alive due to inconsistent watering schedules. Forgetting to check soil moisture regularly often results in over- or under-watering, leading to plant stress or death. Our solution addresses this common challenge by providing an automated, user-friendly plant care companion.
 
 Solution Overview
+
 Smart Plant Buddy is a fully functional .NET MAUI Blazor Hybrid application that serves as an intelligent plant care companion. It connects a low-cost capacitive soil moisture sensor to the user’s smartphone, providing real-time monitoring and automated reminders — making plant care effortless and reliable.
 
 Project Scope & Objectives

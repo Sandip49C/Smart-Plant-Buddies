@@ -29,6 +29,7 @@ Solution Overview
 Smart Plant Buddy is a fully functional .NET MAUI Blazor Hybrid application that serves as an intelligent plant care companion. It connects a low-cost capacitive soil moisture sensor to the user’s smartphone, providing real-time monitoring and automated reminders — making plant care effortless and reliable.
 
 Project Scope & Objectives
+
 Smart Plant Buddy delivers the following core features:
 
 Real-time display of soil moisture and temperature
@@ -39,7 +40,9 @@ Clean, intuitive dashboard matching our approved wireframes
 Manual watering log with timestamped entries
 
 All development remained strictly within scope: single plant, single sensor, mobile-only, offline-first architecture.
+
 Technical Architecture
+
 The application follows a clean MVVM pattern with full separation of concerns:
 
 Data Layer: SQLite database with five normalized tables exactly matching our ERD (Users → Sensors → SensorReadings → Alerts/WateringLogs)
@@ -56,6 +59,7 @@ Intuitive interface confirmed by all team members and peers
 Zero data loss across 50+ simulated watering events over multiple days
 
 Conclusion
+
 Smart Plant Buddy successfully transforms a common household problem into an elegant, reliable mobile solution. The application is production-ready, fully documented, and adheres 100% to our original project charter, ERD, and UI specifications.
 We would like to thank you for your guidance throughout the semester. This project has significantly strengthened our skills in mobile development, database design, security implementation, and professional software engineering practices.
 
